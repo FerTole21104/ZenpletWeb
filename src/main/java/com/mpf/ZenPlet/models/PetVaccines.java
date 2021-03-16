@@ -26,10 +26,7 @@ public class PetVaccines {
     @Column(name = "pet_vaccine_next", nullable = false)
     private String petVaccineNext;
 
-    @Column(name = "pet_vaccine_created_at", nullable = false)
-    private String pet_vaccine_created_at;
-    @Column(name = "pet_vaccine_updated_at", nullable = false)
-    private String petVaccineUpdatedAt;
+ 
 
     @JsonBackReference
     @JoinColumn(name = "Pet")
@@ -44,7 +41,7 @@ public class PetVaccines {
     /**
      * 
      */
-    public PetVaccines() {
+    public PetVaccines() {}
     
     /**
      * @return long return the petVaccineId
@@ -88,48 +85,5 @@ public class PetVaccines {
         this.petVaccineNext = petVaccineNext;
     }
 
-    /**
-     * @return String return the pet_vaccine_created_at
-     */
-    public String getPet_vaccine_created_at() {
-        return pet_vaccine_created_at;
-    }
-
-    /**
-     * @param pet_vaccine_created_at the pet_vaccine_created_at to set
-     */
-    public void setPet_vaccine_created_at(String pet_vaccine_created_at) {
-        this.pet_vaccine_created_at = pet_vaccine_created_at;
-    }
-
-    /**
-     * @return String return the petVaccineUpdatedAt
-     */
-    public String getPetVaccineUpdatedAt() {
-        return petVaccineUpdatedAt;
-    }
-
-    /**
-     * @param petVaccineUpdatedAt the petVaccineUpdatedAt to set
-     */
-    public void setPetVaccineUpdatedAt(String petVaccineUpdatedAt) {
-        this.petVaccineUpdatedAt = petVaccineUpdatedAt;
-    }
-
-    /**
-     * @param petVaccineId
-     * @param petVaccineDate
-     * @param petVaccineNext
-     * @param pet_vaccine_created_at
-     * @param petVaccineUpdatedAt
-     */
-    public PetVaccines(long petVaccineId, String petVaccineDate, String petVaccineNext, String pet_vaccine_created_at,
-            String petVaccineUpdatedAt) {
-        this.petVaccineId = petVaccineId;
-        this.petVaccineDate = petVaccineDate;
-        this.petVaccineNext = petVaccineNext;
-        this.pet_vaccine_created_at = pet_vaccine_created_at;
-        this.petVaccineUpdatedAt = petVaccineUpdatedAt;
-    }
-
+  
 }
