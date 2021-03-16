@@ -28,6 +28,7 @@ public class PetVaccines {
 
     @Column(name = "pet_vaccine_created_at", nullable = false)
     private String pet_vaccine_created_at;
+
     @Column(name = "pet_vaccine_updated_at", nullable = false)
     private String pet_vaccine_updated_at;
 
@@ -39,7 +40,7 @@ public class PetVaccines {
     @JsonBackReference
     @JoinColumn(name = "Vaccine")
     @ManyToMany(fetch = FetchType.LAZY)
-    private  Vaccines vaccines;
+    private Vaccines vaccines;
 
     /**
      * 
@@ -71,7 +72,7 @@ public class PetVaccines {
      * @return long return the pet_vaccine_id
      */
     public long getPet_vaccine_id() {
-        return pet_vaccine_id;got
+        return pet_vaccine_id;
     }
 
     /**

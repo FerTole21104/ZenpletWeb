@@ -11,12 +11,12 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "vaccines")
+@Table(name = "Vaccine")
 public class Vaccines {
     // Atributos
     @Id
     @Column(name = "vaccines_id", nullable = false)
-    private long vaccinesID;
+    private long vaccinesId;
     @Column(name = "vaccines_name")
     private String vaccinesName;
     @Column(name = "vaccines_description")
@@ -31,8 +31,8 @@ public class Vaccines {
     public Vaccines() {
     }
 
-    public Vaccines(long vaccinesID, String vaccinesName, String vaccinesDescription) {
-        this.vaccinesID = vaccinesID;
+    public Vaccines(long vaccinesId, String vaccinesName, String vaccinesDescription) {
+        this.vaccinesId = vaccinesId;
         this.vaccinesName = vaccinesName;
         this.vaccinesDescription = vaccinesDescription;
     }
@@ -55,12 +55,12 @@ public class Vaccines {
         this.vaccinesDescription = vaccinesDescription;
     }
 
-    public long getVaccinesID() {
-        return vaccinesID;
+    public long getVaccinesId() {
+        return vaccinesId;
     }
 
-    public void setVaccinesID(long vaccinesID) {
-        this.vaccinesID = vaccinesID;
+    public void setVaccinesId(long vaccinesId) {
+        this.vaccinesId = vaccinesId;
     }
 
 }

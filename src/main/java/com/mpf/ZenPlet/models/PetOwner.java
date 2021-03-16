@@ -13,7 +13,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "Pet_Owner")
 public class PetOwner {
-    // Atributos
     @Id
     @Column(name = "owner_pet_id", nullable = false)
     private long ownerPetId;
@@ -31,7 +30,6 @@ public class PetOwner {
     @ManyToMany(fetch = FetchType.LAZY)
     private Pet pet;
 
-    // Constructor
     public PetOwner() {
     }
 
