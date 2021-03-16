@@ -39,35 +39,6 @@ public class LostPet {
     @ManyToMany(fetch = FetchType.LAZY)
     private Owner owner;        
 
-    
-
-    /**
-     * @return Pet return the pet
-     */
-    public Pet getPet() {
-        return pet;
-    }
-
-    /**
-     * @param pet the pet to set
-     */
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    /**
-     * @return Owner return the owner
-     */
-    public Owner getOwner() {
-        return owner;
-    }
-
-    /**
-     * @param owner the owner to set
-     */
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
 
     /**
      * 
@@ -76,8 +47,6 @@ public class LostPet {
     }
 
  
-
-
     /**
      * @return long return the lostPetId
      */
@@ -139,17 +108,14 @@ public class LostPet {
      * @param lostPetAdditionalInfo
      * @param lostPetCreatedAt
      * @param lostPetUpdatedAt
-     * @param pet
-     * @param owner
+   
      */
-    public LostPet(long lostPetId, String lostPetAdditionalInfo, String lostPetCreatedAt, String lostPetUpdatedAt,
-            Pet pet, Owner owner) {
+    public LostPet(long lostPetId, String lostPetAdditionalInfo, String lostPetCreatedAt, String lostPetUpdatedAt) {
         this.lostPetId = lostPetId;
         this.lostPetAdditionalInfo = lostPetAdditionalInfo;
         this.lostPetCreatedAt = lostPetCreatedAt;
         this.lostPetUpdatedAt = lostPetUpdatedAt;
-        this.pet = pet;
-        this.owner = owner;
+     
     }
 
 }

@@ -45,38 +45,7 @@ public class PetVaccines {
      * 
      */
     public PetVaccines() {
-    }
-
     
-    /**
-     * @return Pet return the pet
-     */
-    public Pet getPet() {
-        return pet;
-    }
-
-    /**
-     * @param pet the pet to set
-     */
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    /**
-     * @return Vaccines return the vaccines
-     */
-    public Vaccines getVaccines() {
-        return vaccines;
-    }
-
-    /**
-     * @param vaccines the vaccines to set
-     */
-    public void setVaccines(Vaccines vaccines) {
-        this.vaccines = vaccines;
-    }
-
-
     /**
      * @return long return the petVaccineId
      */
@@ -144,6 +113,22 @@ public class PetVaccines {
      * @param petVaccineUpdatedAt the petVaccineUpdatedAt to set
      */
     public void setPetVaccineUpdatedAt(String petVaccineUpdatedAt) {
+        this.petVaccineUpdatedAt = petVaccineUpdatedAt;
+    }
+
+    /**
+     * @param petVaccineId
+     * @param petVaccineDate
+     * @param petVaccineNext
+     * @param pet_vaccine_created_at
+     * @param petVaccineUpdatedAt
+     */
+    public PetVaccines(long petVaccineId, String petVaccineDate, String petVaccineNext, String pet_vaccine_created_at,
+            String petVaccineUpdatedAt) {
+        this.petVaccineId = petVaccineId;
+        this.petVaccineDate = petVaccineDate;
+        this.petVaccineNext = petVaccineNext;
+        this.pet_vaccine_created_at = pet_vaccine_created_at;
         this.petVaccineUpdatedAt = petVaccineUpdatedAt;
     }
 
