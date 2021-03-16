@@ -1,6 +1,7 @@
 package com.mpf.ZenPlet.models;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -16,43 +19,24 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Table(name = "Lost_Pet")
 public class LostPet {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long lostPetId;
+    @EmbeddedId
+    // private LostPetId id = new LostPetId();
+
+    @ManyToOne
+    @MapsId("petId")
+    private Pet pet;
+
+    @ManyToOne
+    @MapsId("ownerId")
+    private Owner owner;
 
     @Column(name = "lost_pet_additional_info", nullable = false)
     private String lostPetAdditionalInfo;
-    	
-    @JsonBackReference
-    @JoinColumn(name = "Pet")
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Pet pet;
-
-    @JsonBackReference
-    @JoinColumn(name = "Owner")
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Owner owner;        
-
 
     /**
      * 
      */
     public LostPet() {
-    }
-
- 
-    /**
-     * @return long return the lostPetId
-     */
-    public long getLostPetId() {
-        return lostPetId;
-    }
-
-    /**
-     * @param lostPetId the lostPetId to set
-     */
-    public void setLostPetId(long lostPetId) {
-        this.lostPetId = lostPetId;
     }
 
     /**
@@ -69,5 +53,4 @@ public class LostPet {
         this.lostPetAdditionalInfo = lostPetAdditionalInfo;
     }
 
-    
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -33,7 +34,8 @@ public class Owner {
     @ManyToMany(mappedBy = "petOwners")
     private Set<Pet> ownerPets;
 
-    // TODO manytomnay of other tables
+    @OneToMany(mappedBy = "Owner")
+    private Set<LostPet> ownerLostPets;
 
     public Owner() {
     }

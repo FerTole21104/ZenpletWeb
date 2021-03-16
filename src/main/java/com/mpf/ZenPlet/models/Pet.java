@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -39,10 +40,11 @@ public class Pet {
 
     @ManyToMany()
     @JsonBackReference
-    @JoinTable(name = "owner_pet", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "owner_id"))
+    @JoinTable(name = "Owner_Pet", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "owner_id"))
     private Set<Owner> petOwners;
 
-    // TODO many to many of others table
+    @OneToMany(mappedBy = "Owner")
+    private Set<LostPet> ownerLostPets;
 
     public Pet() {
     }
