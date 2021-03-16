@@ -18,16 +18,16 @@ public class LostPet {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long lost_pet_id;
+    private long lostPetId;
 
     @Column(name = "lost_pet_additional_info", nullable = false)
-    private String lostPet_additional_info;
+    private String lostPetAdditionalInfo;
 
     @Column(name = "lost_pet_created_at", nullable = false)
-    private String lost_pet_created_at;
+    private String lostPetCreatedAt;
 
     @Column(name = "lost_pet_updated_at", nullable = false)
-    private String lost_pet_updated_at;
+    private String lostPetUpdatedAt;
     	
     @JsonBackReference
     @JoinColumn(name = "Pet")
@@ -37,67 +37,9 @@ public class LostPet {
     @JsonBackReference
     @JoinColumn(name = "Owner")
     @ManyToMany(fetch = FetchType.LAZY)
-    private Owner owner;    
-
-
+    private Owner owner;        
 
     
-
-    /**
-     * @return long return the lost_pet_id
-     */
-    public long getLost_pet_id() {
-        return lost_pet_id;
-    }
-
-    /**
-     * @param lost_pet_id the lost_pet_id to set
-     */
-    public void setLost_pet_id(long lost_pet_id) {
-        this.lost_pet_id = lost_pet_id;
-    }
-
-    /**
-     * @return String return the lostPet_additional_info
-     */
-    public String getLostPet_additional_info() {
-        return lostPet_additional_info;
-    }
-
-    /**
-     * @param lostPet_additional_info the lostPet_additional_info to set
-     */
-    public void setLostPet_additional_info(String lostPet_additional_info) {
-        this.lostPet_additional_info = lostPet_additional_info;
-    }
-
-    /**
-     * @return String return the lost_pet_created_at
-     */
-    public String getLost_pet_created_at() {
-        return lost_pet_created_at;
-    }
-
-    /**
-     * @param lost_pet_created_at the lost_pet_created_at to set
-     */
-    public void setLost_pet_created_at(String lost_pet_created_at) {
-        this.lost_pet_created_at = lost_pet_created_at;
-    }
-
-    /**
-     * @return String return the lost_pet_updated_at
-     */
-    public String getLost_pet_updated_at() {
-        return lost_pet_updated_at;
-    }
-
-    /**
-     * @param lost_pet_updated_at the lost_pet_updated_at to set
-     */
-    public void setLost_pet_updated_at(String lost_pet_updated_at) {
-        this.lost_pet_updated_at = lost_pet_updated_at;
-    }
 
     /**
      * @return Pet return the pet
@@ -133,20 +75,79 @@ public class LostPet {
     public LostPet() {
     }
 
+ 
+
+
     /**
-     * @param lost_pet_id
-     * @param lostPet_additional_info
-     * @param lost_pet_created_at
-     * @param lost_pet_updated_at
+     * @return long return the lostPetId
+     */
+    public long getLostPetId() {
+        return lostPetId;
+    }
+
+    /**
+     * @param lostPetId the lostPetId to set
+     */
+    public void setLostPetId(long lostPetId) {
+        this.lostPetId = lostPetId;
+    }
+
+    /**
+     * @return String return the lostPetAdditionalInfo
+     */
+    public String getLostPetAdditionalInfo() {
+        return lostPetAdditionalInfo;
+    }
+
+    /**
+     * @param lostPetAdditionalInfo the lostPetAdditionalInfo to set
+     */
+    public void setLostPetAdditionalInfo(String lostPetAdditionalInfo) {
+        this.lostPetAdditionalInfo = lostPetAdditionalInfo;
+    }
+
+    /**
+     * @return String return the lostPetCreatedAt
+     */
+    public String getLostPetCreatedAt() {
+        return lostPetCreatedAt;
+    }
+
+    /**
+     * @param lostPetCreatedAt the lostPetCreatedAt to set
+     */
+    public void setLostPetCreatedAt(String lostPetCreatedAt) {
+        this.lostPetCreatedAt = lostPetCreatedAt;
+    }
+
+    /**
+     * @return String return the lostPetUpdatedAt
+     */
+    public String getLostPetUpdatedAt() {
+        return lostPetUpdatedAt;
+    }
+
+    /**
+     * @param lostPetUpdatedAt the lostPetUpdatedAt to set
+     */
+    public void setLostPetUpdatedAt(String lostPetUpdatedAt) {
+        this.lostPetUpdatedAt = lostPetUpdatedAt;
+    }
+
+    /**
+     * @param lostPetId
+     * @param lostPetAdditionalInfo
+     * @param lostPetCreatedAt
+     * @param lostPetUpdatedAt
      * @param pet
      * @param owner
      */
-    public LostPet(long lost_pet_id, String lostPet_additional_info, String lost_pet_created_at,
-            String lost_pet_updated_at, Pet pet, Owner owner) {
-        this.lost_pet_id = lost_pet_id;
-        this.lostPet_additional_info = lostPet_additional_info;
-        this.lost_pet_created_at = lost_pet_created_at;
-        this.lost_pet_updated_at = lost_pet_updated_at;
+    public LostPet(long lostPetId, String lostPetAdditionalInfo, String lostPetCreatedAt, String lostPetUpdatedAt,
+            Pet pet, Owner owner) {
+        this.lostPetId = lostPetId;
+        this.lostPetAdditionalInfo = lostPetAdditionalInfo;
+        this.lostPetCreatedAt = lostPetCreatedAt;
+        this.lostPetUpdatedAt = lostPetUpdatedAt;
         this.pet = pet;
         this.owner = owner;
     }
