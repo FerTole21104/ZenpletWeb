@@ -18,19 +18,19 @@ public class PetVaccines {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long pet_vaccine_id;
+    private long petVaccineId;
 
     @Column(name = "pet_vaccine_date", nullable = false)
-    private String pet_vaccine_date;
+    private String petVaccineDate;
 
     @Column(name = "pet_vaccine_next", nullable = false)
-    private String pet_vaccine_next;
+    private String petVaccineNext;
 
     @Column(name = "pet_vaccine_created_at", nullable = false)
     private String pet_vaccine_created_at;
 
     @Column(name = "pet_vaccine_updated_at", nullable = false)
-    private String pet_vaccine_updated_at;
+    private String petVaccineUpdatedAt;
 
     @JsonBackReference
     @JoinColumn(name = "Pet")
@@ -49,65 +49,42 @@ public class PetVaccines {
     }
 
     /**
-     * @param pet_vaccine_id
-     * @param pet_vaccine_date
-     * @param pet_vaccine_next
-     * @param pet_vaccine_created_at
-     * @param pet_vaccine_updated_at
-     * @param pet
-     * @param vaccines
+     * @return long return the petVaccineId
      */
-    public PetVaccines(long pet_vaccine_id, String pet_vaccine_date, String pet_vaccine_next,
-            String pet_vaccine_created_at, String pet_vaccine_updated_at, Pet pet, Vaccines vaccines) {
-        this.pet_vaccine_id = pet_vaccine_id;
-        this.pet_vaccine_date = pet_vaccine_date;
-        this.pet_vaccine_next = pet_vaccine_next;
-        this.pet_vaccine_created_at = pet_vaccine_created_at;
-        this.pet_vaccine_updated_at = pet_vaccine_updated_at;
-        this.pet = pet;
-        this.vaccines = vaccines;
+    public long getPetVaccineId() {
+        return petVaccineId;
+    }
+
+    public void setPetVaccineId(long petVaccineId) {
+        this.petVaccineId = petVaccineId;
     }
 
     /**
-     * @return long return the pet_vaccine_id
+     * @return String return the petVaccineDate
      */
-    public long getPet_vaccine_id() {
-        return pet_vaccine_id;
+    public String getPetVaccineDate() {
+        return petVaccineDate;
     }
 
     /**
-     * @param pet_vaccine_id the pet_vaccine_id to set
+     * @param petVaccineDate the petVaccineDate to set
      */
-    public void setPet_vaccine_id(long pet_vaccine_id) {
-        this.pet_vaccine_id = pet_vaccine_id;
+    public void setPetVaccineDate(String petVaccineDate) {
+        this.petVaccineDate = petVaccineDate;
     }
 
     /**
-     * @return String return the pet_vaccine_date
+     * @return String return the petVaccineNext
      */
-    public String getPet_vaccine_date() {
-        return pet_vaccine_date;
+    public String getPetVaccineNext() {
+        return petVaccineNext;
     }
 
     /**
-     * @param pet_vaccine_date the pet_vaccine_date to set
+     * @param petVaccineNext the petVaccineNext to set
      */
-    public void setPet_vaccine_date(String pet_vaccine_date) {
-        this.pet_vaccine_date = pet_vaccine_date;
-    }
-
-    /**
-     * @return String return the pet_vaccine_next
-     */
-    public String getPet_vaccine_next() {
-        return pet_vaccine_next;
-    }
-
-    /**
-     * @param pet_vaccine_next the pet_vaccine_next to set
-     */
-    public void setPet_vaccine_next(String pet_vaccine_next) {
-        this.pet_vaccine_next = pet_vaccine_next;
+    public void setPetVaccineNext(String petVaccineNext) {
+        this.petVaccineNext = petVaccineNext;
     }
 
     /**
@@ -125,45 +102,33 @@ public class PetVaccines {
     }
 
     /**
-     * @return String return the pet_vaccine_updated_at
+     * @return String return the petVaccineUpdatedAt
      */
-    public String getPet_vaccine_updated_at() {
-        return pet_vaccine_updated_at;
+    public String getPetVaccineUpdatedAt() {
+        return petVaccineUpdatedAt;
     }
 
     /**
-     * @param pet_vaccine_updated_at the pet_vaccine_updated_at to set
+     * @param petVaccineUpdatedAt the petVaccineUpdatedAt to set
      */
-    public void setPet_vaccine_updated_at(String pet_vaccine_updated_at) {
-        this.pet_vaccine_updated_at = pet_vaccine_updated_at;
+    public void setPetVaccineUpdatedAt(String petVaccineUpdatedAt) {
+        this.petVaccineUpdatedAt = petVaccineUpdatedAt;
     }
 
     /**
-     * @return Pet return the pet
+     * @param petVaccineId
+     * @param petVaccineDate
+     * @param petVaccineNext
+     * @param pet_vaccine_created_at
+     * @param petVaccineUpdatedAt
      */
-    public Pet getPet() {
-        return pet;
-    }
-
-    /**
-     * @param pet the pet to set
-     */
-    public void setPet(Pet pet) {
-        this.pet = pet;
-    }
-
-    /**
-     * @return Vaccines return the vaccines
-     */
-    public Vaccines getVaccines() {
-        return vaccines;
-    }
-
-    /**
-     * @param vaccines the vaccines to set
-     */
-    public void setVaccines(Vaccines vaccines) {
-        this.vaccines = vaccines;
+    public PetVaccines(long petVaccineId, String petVaccineDate, String petVaccineNext, String pet_vaccine_created_at,
+            String petVaccineUpdatedAt) {
+        this.petVaccineId = petVaccineId;
+        this.petVaccineDate = petVaccineDate;
+        this.petVaccineNext = petVaccineNext;
+        this.pet_vaccine_created_at = pet_vaccine_created_at;
+        this.petVaccineUpdatedAt = petVaccineUpdatedAt;
     }
 
 }
