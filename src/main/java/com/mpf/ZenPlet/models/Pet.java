@@ -13,8 +13,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "Pet")
 public class Pet {
@@ -38,13 +36,14 @@ public class Pet {
     @Column(name = "pet_genre", nullable = true)
     private String petGenre;
 
-    @ManyToMany()
-    @JsonBackReference
-    @JoinTable(name = "Owner_Pet", joinColumns = @JoinColumn(name = "pet_id"), inverseJoinColumns = @JoinColumn(name = "owner_id"))
+    @ManyToMany(mappedBy = "ownerPets")
     private Set<Owner> petOwners;
 
-    @OneToMany(mappedBy = "Owner")
+    @OneToMany(mappedBy = "pet")
     private Set<LostPet> ownerLostPets;
+
+    @OneToMany(mappedBy = "pet")
+    private Set<LostPet> petVaccines;
 
     public Pet() {
     }

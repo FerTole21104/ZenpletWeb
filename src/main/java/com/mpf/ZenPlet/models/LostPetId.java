@@ -3,6 +3,7 @@ package com.mpf.ZenPlet.models;
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -10,7 +11,10 @@ public class LostPetId implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Column(name = "pet_id")
     private Long petId;
+
+    @Column(name = "owner_id")
     private Long ownerId;
 
     public LostPetId() {

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
@@ -14,14 +15,16 @@ import javax.persistence.Table;
 public class PetVaccines {
 
     @EmbeddedId
-    private PetVaccinesId id = new PetVaccinesId();
+    private PetVaccinesId id;
 
     @ManyToOne
     @MapsId("petId")
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     @ManyToOne
-    @MapsId("petId")
+    @MapsId("vaccineId")
+    @JoinColumn(name = "vaccine_id")
     private Vaccines vaccine;
 
     @Column(name = "pet_vaccine_date", nullable = false)

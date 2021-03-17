@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Owner")
@@ -31,10 +35,12 @@ public class Owner {
     @Column(name = "owner_phone_number", nullable = true)
     private String ownerPhoneNumber;
 
-    @ManyToMany(mappedBy = "petOwners")
+    @ManyToMany
+    @JsonBackReference
+    @JoinTable(name = "Owner_Pet", joinColumns = @JoinColumn(name = "owner_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
     private Set<Pet> ownerPets;
 
-    @OneToMany(mappedBy = "Owner")
+    @OneToMany(mappedBy = "owner")
     private Set<LostPet> ownerLostPets;
 
     public Owner() {

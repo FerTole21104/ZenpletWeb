@@ -1,14 +1,12 @@
 package com.mpf.ZenPlet.models;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Vaccine")
@@ -22,10 +20,8 @@ public class Vaccines {
     @Column(name = "vaccines_description")
     private String vaccinesDescription;
 
-    @JsonBackReference
-    @JoinColumn(name = "vaccines_id")
-    @ManyToMany(fetch = FetchType.LAZY)
-    private PetVaccines petVaccines;
+    @OneToMany(mappedBy = "vaccine")
+    private Set<PetVaccines> petVaccines;
 
     // Constructores
     public Vaccines() {
