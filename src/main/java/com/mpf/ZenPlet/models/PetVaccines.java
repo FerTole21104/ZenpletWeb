@@ -36,7 +36,14 @@ public class PetVaccines {
     public PetVaccines() {
     }
 
-    public PetVaccines(PetVaccinesId id, Pet pet, Vaccines vaccine, Date petVaccineDate, Date petVaccineNext) {
+    public PetVaccines(PetVaccinesId id, Pet pet, Vaccines vaccine, Date petVaccineDate, Date petVaccineNext) { // can
+                                                                                                                // be
+                                                                                                                // modified
+                                                                                                                // to
+                                                                                                                // model
+                                                                                                                // input
+                                                                                                                // in
+                                                                                                                // swagger
         this.id = id;
         this.pet = pet;
         this.vaccine = vaccine;
