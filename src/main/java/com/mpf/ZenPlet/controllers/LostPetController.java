@@ -19,14 +19,14 @@ public class LostPetController {
     @Autowired
     private LostPetRepository lostPetRepository;
 
-    @GetMapping("/lostPet")
-    public List<LostPet> getOwners() {
+    @GetMapping("/lost-pets")
+    public List<LostPet> getLostPets() {
         return lostPetRepository.findAll();
     }
 
     @PostMapping("/save-lostPet")
     @ResponseBody
-    public LostPet saveOwner(@RequestBody LostPet lostPet) {
+    public LostPet saveLostPet(@RequestBody LostPet lostPet) {
         return lostPetRepository.save(lostPet);
-    } 
+    }
 }

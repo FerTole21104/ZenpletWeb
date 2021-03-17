@@ -21,14 +21,14 @@ public class PetVaccinesController {
     private PetVaccinesRepository petVaccinesRepository;
 
     @GetMapping("/pet-vaccines")
-    public List<PetVaccines> getOwners() {
+    public List<PetVaccines> getPetVaccines() {
         return petVaccinesRepository.findAll();
     }
 
     @PostMapping("/save-pet-vacines")
     @ResponseBody
-    public PetVaccines saveOwner(@RequestBody PetVaccines petVaccines) {
+    public PetVaccines savePetVaccines(@RequestBody PetVaccines petVaccines) {
         return petVaccinesRepository.save(petVaccines);
     }
-    
+
 }
