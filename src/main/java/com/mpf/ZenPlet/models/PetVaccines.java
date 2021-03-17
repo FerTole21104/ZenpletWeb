@@ -1,80 +1,83 @@
 package com.mpf.ZenPlet.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "Pet_Vaccine")
 public class PetVaccines {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long petVaccineId;
+    @EmbeddedId
+    private PetVaccinesId id = new PetVaccinesId();
 
-    @Column(name = "pet_vaccine_date", nullable = false)
-    private String petVaccineDate;
-
-    @Column(name = "pet_vaccine_next", nullable = false)
-    private String petVaccineNext;
-
-    @JsonBackReference
-    @JoinColumn(name = "Pet")
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToOne
+    @MapsId("petId")
     private Pet pet;
 
-    @JsonBackReference
-    @JoinColumn(name = "Vaccine")
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Vaccines vaccines;
+    @ManyToOne
+    @MapsId("petId")
+    private Vaccines vaccine;
+
+    @Column(name = "pet_vaccine_date", nullable = false)
+    private Date petVaccineDate;
+
+    @Column(name = "pet_vaccine_next", nullable = false)
+    private Date petVaccineNext;
 
     public PetVaccines() {
     }
 
-    /**
-     * @return long return the petVaccineId
-     */
-    public long getPetVaccineId() {
-        return petVaccineId;
+    public PetVaccines(PetVaccinesId id, Pet pet, Vaccines vaccine, Date petVaccineDate, Date petVaccineNext) {
+        this.id = id;
+        this.pet = pet;
+        this.vaccine = vaccine;
+        this.petVaccineDate = petVaccineDate;
+        this.petVaccineNext = petVaccineNext;
     }
 
-    public void setPetVaccineId(long petVaccineId) {
-        this.petVaccineId = petVaccineId;
+    public PetVaccinesId getId() {
+        return id;
     }
 
-    /**
-     * @return String return the petVaccineDate
-     */
-    public String getPetVaccineDate() {
+    public void setId(PetVaccinesId id) {
+        this.id = id;
+    }
+
+    public Pet getPet() {
+        return pet;
+    }
+
+    public void setPet(Pet pet) {
+        this.pet = pet;
+    }
+
+    public Vaccines getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccines vaccine) {
+        this.vaccine = vaccine;
+    }
+
+    public Date getPetVaccineDate() {
         return petVaccineDate;
     }
 
-    /**
-     * @param petVaccineDate the petVaccineDate to set
-     */
-    public void setPetVaccineDate(String petVaccineDate) {
+    public void setPetVaccineDate(Date petVaccineDate) {
         this.petVaccineDate = petVaccineDate;
     }
 
-    /**
-     * @return String return the petVaccineNext
-     */
-    public String getPetVaccineNext() {
+    public Date getPetVaccineNext() {
         return petVaccineNext;
     }
 
-    /**
-     * @param petVaccineNext the petVaccineNext to set
-     */
-    public void setPetVaccineNext(String petVaccineNext) {
+    public void setPetVaccineNext(Date petVaccineNext) {
         this.petVaccineNext = petVaccineNext;
     }
 
