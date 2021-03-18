@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -13,11 +15,13 @@ import javax.persistence.Table;
 public class Vaccines {
     // Atributos
     @Id
-    @Column(name = "vaccines_id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long vaccinesId;
-    @Column(name = "vaccines_name")
+
+    @Column(name = "vaccines_name", nullable = false)
     private String vaccinesName;
-    @Column(name = "vaccines_description")
+
+    @Column(name = "vaccines_description", nullable = false)
     private String vaccinesDescription;
 
     @OneToMany(mappedBy = "vaccine")

@@ -1,7 +1,6 @@
 package com.mpf.ZenPlet.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.mpf.ZenPlet.models.Owner;
 import com.mpf.ZenPlet.repositories.OwnerRepository;
