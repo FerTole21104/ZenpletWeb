@@ -43,6 +43,9 @@ public class Owner {
     @OneToMany(mappedBy = "owner")
     private Set<LostPet> ownerLostPets;
 
+    @Column(name = "owner_token", nullable = false)
+    private String token;
+
     public Owner() {
     }
 
@@ -52,6 +55,17 @@ public class Owner {
         this.ownerEmail = ownerEmail;
         this.ownerPassword = ownerPassword;
         this.ownerPhoneNumber = ownerPhoneNumber;
+    }
+
+    public Owner(String ownerName, String ownerPassword, String token) {
+        this.ownerName = ownerName;
+        this.ownerPassword = ownerPassword;
+        this.token = token;
+    }
+
+    public Owner(String ownerName, String ownerPassword) {
+        this.ownerName = ownerName;
+        this.ownerPassword = ownerPassword;
     }
 
     public long getOwnerId() {
@@ -92,6 +106,14 @@ public class Owner {
 
     public void setOwnerPhoneNumber(String ownerPhoneNumber) {
         this.ownerPhoneNumber = ownerPhoneNumber;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
 }

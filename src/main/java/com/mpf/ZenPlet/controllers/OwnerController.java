@@ -1,6 +1,8 @@
 package com.mpf.ZenPlet.controllers;
 
+import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import com.mpf.ZenPlet.models.Owner;
 import com.mpf.ZenPlet.repositories.OwnerRepository;
@@ -14,6 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api")
@@ -58,4 +67,35 @@ public class OwnerController {
         }
     }
 
+    // Security
+    @GetMapping("login-owner")
+    public Owner login(@RequestParam("login") String login, @RequestParam("password") String password) {
+
+        Owner owner = ownerRepository.loginOwner(login, password);
+
+        if (owner != null) {
+            if (owner.getToken().isEmpty()) {
+                owner.setToken(getJWTToken(login));
+                updateOwner(owner.getOwnerId(), owner);
+            }
+            return owner;
+        }
+
+        return new Owner();
+
+    }
+
+    private String getJWTToken(String username) {
+        String secretKey = "mySecretKey";
+        List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+
+        String token = Jwts.builder().setId("softtekJWT").setSubject(username)
+                .claim("authorities",
+                        grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 600000))
+                .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
+
+        return "Bearer " + token;
+    }
 }
