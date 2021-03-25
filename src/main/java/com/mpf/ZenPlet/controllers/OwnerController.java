@@ -72,11 +72,10 @@ public class OwnerController {
     // Security
     @GetMapping("login-owner")
     public Owner login(@RequestParam("login") String login, @RequestParam("password") String password) {
-
         Owner owner = ownerRepository.loginOwner(login, password);
 
         if (owner != null) {
-            if (owner.getToken().isEmpty()) {
+            if (owner.getToken() == null || owner.getToken().isEmpty()) {
                 owner.setToken(getJWTToken(login));
                 updateOwner(owner.getOwnerId(), owner);
             }
