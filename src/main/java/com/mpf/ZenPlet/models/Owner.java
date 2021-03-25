@@ -36,7 +36,6 @@ public class Owner {
     private String ownerPhoneNumber;
 
     @ManyToMany
-    @JsonBackReference
     @JoinTable(name = "Owner_Pet", joinColumns = @JoinColumn(name = "owner_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
     private Set<Pet> ownerPets;
 
@@ -47,6 +46,17 @@ public class Owner {
     private String token;
 
     public Owner() {
+    }
+
+    public Owner(long ownerId, String ownerName, String ownerEmail, String ownerPassword, String ownerPhoneNumber,
+            Set<Pet> ownerPets, String token) {
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
+        this.ownerPassword = ownerPassword;
+        this.ownerPhoneNumber = ownerPhoneNumber;
+        this.ownerPets = ownerPets;
+        this.token = token;
     }
 
     public Owner(long ownerId, String ownerName, String ownerEmail, String ownerPassword, String ownerPhoneNumber) {
@@ -114,6 +124,14 @@ public class Owner {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public Set<Pet> getOwnerPets() {
+        return ownerPets;
+    }
+
+    public void setOwnerPets(Set<Pet> ownerPets) {
+        this.ownerPets = ownerPets;
     }
 
 }
