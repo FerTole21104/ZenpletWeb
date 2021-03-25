@@ -42,7 +42,7 @@ public class Owner {
     @OneToMany(mappedBy = "owner")
     private Set<LostPet> ownerLostPets;
 
-    @Column(name = "owner_token", nullable = false)
+    @Column(name = "owner_token", nullable = true)
     private String token;
 
     public Owner() {
