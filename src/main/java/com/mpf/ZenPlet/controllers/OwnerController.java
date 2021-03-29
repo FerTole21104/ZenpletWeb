@@ -60,6 +60,10 @@ public class OwnerController {
         owner.setOwnerId(id);
         return ownerRepository.save(owner);
     }
+    @RequestMapping(value = "/owner/email/{email}", method = RequestMethod.GET)
+    public Owner getOwnerByEmail(@PathVariable("email") String email) {
+        return ownerRepository.findByEmail(email);
+    }
 
     @RequestMapping(value = "/delete-owner/{id}", method = RequestMethod.DELETE)
     public void deleteOwner(@PathVariable("id") long id) {
