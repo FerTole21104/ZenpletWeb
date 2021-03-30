@@ -1,5 +1,6 @@
 package com.mpf.ZenPlet.controllers;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -60,6 +61,7 @@ public class OwnerController {
         owner.setOwnerId(id);
         return ownerRepository.save(owner);
     }
+
     @RequestMapping(value = "/owner/email/{email}", method = RequestMethod.GET)
     public Owner getOwnerByEmail(@PathVariable("email") String email) {
         return ownerRepository.findByEmail(email);
@@ -93,12 +95,13 @@ public class OwnerController {
     private String getJWTToken(String username) {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.HOUR, 12);
 
         String token = Jwts.builder().setId("softtekJWT").setSubject(username)
                 .claim("authorities",
                         grantedAuthorities.stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 900000))
+                .setIssuedAt(new Date(System.currentTimeMillis())).setExpiration(calendar.getTime())
                 .signWith(SignatureAlgorithm.HS512, secretKey.getBytes()).compact();
 
         return "Bearer " + token;
