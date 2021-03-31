@@ -2,12 +2,14 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,8 +36,8 @@ public class Pet {
     @Column(name = "pet_genre", nullable = true)
     private String petGenre;
 
-    @ManyToMany(mappedBy = "ownerPets")
-    private Set<Owner> petOwners;
+    @ManyToOne()
+    private Owner petOwners;
 
     @OneToMany(mappedBy = "pet")
     private Set<LostPet> ownerLostPets;

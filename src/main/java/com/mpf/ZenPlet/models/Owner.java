@@ -2,8 +2,10 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,8 +37,7 @@ public class Owner {
     @Column(name = "owner_phone_number", nullable = true)
     private String ownerPhoneNumber;
 
-    @ManyToMany
-    @JoinTable(name = "Owner_Pet", joinColumns = @JoinColumn(name = "owner_id"), inverseJoinColumns = @JoinColumn(name = "pet_id"))
+    @OneToMany(mappedBy = "petOwners")
     private Set<Pet> ownerPets;
 
     @OneToMany(mappedBy = "owner")
@@ -56,6 +57,18 @@ public class Owner {
         this.ownerPassword = ownerPassword;
         this.ownerPhoneNumber = ownerPhoneNumber;
         this.ownerPets = ownerPets;
+        this.token = token;
+    }
+
+    public Owner(long ownerId, String ownerName, String ownerEmail, String ownerPassword, String ownerPhoneNumber,
+            Set<Pet> ownerPets, Set<LostPet> ownerLostPets, String token) {
+        this.ownerId = ownerId;
+        this.ownerName = ownerName;
+        this.ownerEmail = ownerEmail;
+        this.ownerPassword = ownerPassword;
+        this.ownerPhoneNumber = ownerPhoneNumber;
+        this.ownerPets = ownerPets;
+        this.ownerLostPets = ownerLostPets;
         this.token = token;
     }
 
