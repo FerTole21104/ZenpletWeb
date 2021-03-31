@@ -9,11 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Owner")
@@ -35,7 +34,8 @@ public class Owner {
     @Column(name = "owner_phone_number", nullable = true)
     private String ownerPhoneNumber;
 
-    @OneToMany(mappedBy = "petOwners")
+    @OneToMany(mappedBy = "petOwner", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonBackReference
     private Set<Pet> ownerPets;
 
     @OneToMany(mappedBy = "owner")

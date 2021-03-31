@@ -2,13 +2,13 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -36,8 +36,9 @@ public class Pet {
     @Column(name = "pet_genre", nullable = true)
     private String petGenre;
 
-    @ManyToOne()
-    private Owner petOwners;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", nullable = false)
+    private Owner petOwner;
 
     @OneToMany(mappedBy = "pet")
     private Set<LostPet> ownerLostPets;
@@ -48,13 +49,15 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(long petId, String petName, byte[] petImage, String petBreed, String petSize, String petGenre) {
+    public Pet(long petId, String petName, byte[] petImage, String petBreed, String petSize, String petGenre,
+            Owner petOwner) {
         this.petId = petId;
         this.petName = petName;
         this.petImage = petImage;
         this.petBreed = petBreed;
         this.petSize = petSize;
         this.petGenre = petGenre;
+        this.petOwner = petOwner;
     }
 
     public long getPetId() {
@@ -103,6 +106,14 @@ public class Pet {
 
     public void setPetGenre(String petGenre) {
         this.petGenre = petGenre;
+    }
+
+    public Owner getPetOwner() {
+        return petOwner;
+    }
+
+    public void setPetOwner(Owner petOwner) {
+        this.petOwner = petOwner;
     }
 
 }
