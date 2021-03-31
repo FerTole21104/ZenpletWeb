@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -26,7 +27,8 @@ public class Pet {
     private String petName;
 
     @Column(name = "pet_image", nullable = true)
-    private byte[] petImage;
+    @Lob
+    private String petImage;
 
     @Column(name = "pet_breed", nullable = true)
     private String petBreed;
@@ -50,7 +52,7 @@ public class Pet {
     public Pet() {
     }
 
-    public Pet(long petId, String petName, byte[] petImage, String petBreed, String petSize, String petGenre,
+    public Pet(long petId, String petName, String petImage, String petBreed, String petSize, String petGenre,
             Owner petOwner) {
         this.petId = petId;
         this.petName = petName;
@@ -77,11 +79,11 @@ public class Pet {
         this.petName = petName;
     }
 
-    public byte[] getPetImage() {
+    public String getPetImage() {
         return petImage;
     }
 
-    public void setPetImage(byte[] petImage) {
+    public void setPetImage(String petImage) {
         this.petImage = petImage;
     }
 
