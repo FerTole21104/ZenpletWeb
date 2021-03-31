@@ -96,7 +96,7 @@ public class OwnerController {
         String secretKey = "mySecretKey";
         List<GrantedAuthority> grantedAuthorities = AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR, 12);
+        calendar.add(Calendar.HOUR, 15);
 
         String token = Jwts.builder().setId("softtekJWT").setSubject(username)
                 .claim("authorities",
