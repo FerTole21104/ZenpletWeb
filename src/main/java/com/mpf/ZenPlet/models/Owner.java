@@ -5,14 +5,12 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "Owner")
@@ -34,8 +32,8 @@ public class Owner {
     @Column(name = "owner_phone_number", nullable = true)
     private String ownerPhoneNumber;
 
-    @OneToMany(mappedBy = "petOwner", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonBackReference
+    @OneToMany(targetEntity = Pet.class, cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "pet_owner_owner_id", nullable = false, updatable = false, insertable = false)
     private Set<Pet> ownerPets;
 
     @OneToMany(mappedBy = "owner")
