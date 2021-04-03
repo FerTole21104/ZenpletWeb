@@ -2,6 +2,7 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Pet")
@@ -46,11 +46,11 @@ public class Pet {
     @ManyToOne
     private Owner petOwner;
 
-    @OneToMany(mappedBy = "pet")
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE)
     private Set<LostPet> ownerLostPets;
 
-    @OneToMany(mappedBy = "pet")
-    private Set<LostPet> petVaccines;
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE)
+    private Set<PetVaccines> petVaccines;
 
     public Pet() {
     }
@@ -123,12 +123,21 @@ public class Pet {
         this.petOwner = petOwner;
     }
 
+<<<<<<< HEAD
     public String getPetBirthdate() {
         return petBirthdate;
     }
 
     public void setPetBirthdate(String petBirthdate) {
         this.petBirthdate = petBirthdate;
+=======
+    public Set<PetVaccines> getPetVaccines() {
+        return petVaccines;
+    }
+
+    public void setPetVaccines(Set<PetVaccines> petVaccines) {
+        this.petVaccines = petVaccines;
+>>>>>>> 3b383d6554eedfef6e6ad6b3bca3a342aabebffd
     }
 
 }

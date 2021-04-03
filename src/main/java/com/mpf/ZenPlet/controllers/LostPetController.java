@@ -1,24 +1,22 @@
 package com.mpf.ZenPlet.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.mpf.ZenPlet.models.LostPet;
 import com.mpf.ZenPlet.repositories.LostPetRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-/*@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)*/
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class LostPetController {
@@ -28,6 +26,11 @@ public class LostPetController {
     @GetMapping("/lost-pet")
     public List<LostPet> getLostPets() {
         return lostPetRepository.findAll();
+    }
+
+    @RequestMapping(value = "/lost-pet/pet/{petId}", method = RequestMethod.GET)
+    public LostPet getLostPetByPetId(@PathVariable("petId") long petId) {
+        return this.lostPetRepository.findLostPetByPetId(petId);
     }
 
     /*
@@ -50,18 +53,18 @@ public class LostPetController {
         return lostPetRepository.save(lostPet);
     }
 
-    @RequestMapping(value = "/edit-lost-pet/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit-lost-pet/{petId}", method = RequestMethod.PUT)
     @ResponseBody
-    public LostPet updateLostPet(@PathVariable("id") long id, @RequestBody LostPet lostPet) {
-        return lostPetRepository.save(lostPet);
+    public LostPet updateLostPet(@PathVariable("petId") long petId, @RequestBody LostPet lostPet) {
+        LostPet lostPetToEdit = lostPetRepository.findLostPetByPetId(petId);
+        lostPetToEdit.setLostPetAdditionalInfo(lostPet.getLostPetAdditionalInfo());
+        return lostPetRepository.save(lostPetToEdit);
     }
 
     @RequestMapping(value = "/delete-lost-pet/{id}", method = RequestMethod.DELETE)
-    public void deleteLostPet(@PathVariable("id") long id) {
-        LostPet lostPet = lostPetRepository.findById(id).get();
-        if (lostPet != null) {
-            lostPetRepository.delete(lostPet);
-        }
+    public void deleteLostPet(@PathVariable("id") long petId) {
+        LostPet lostPetToDelete = lostPetRepository.findLostPetByPetId(petId);
+        lostPetRepository.delete(lostPetToDelete);
     }
 
 }
