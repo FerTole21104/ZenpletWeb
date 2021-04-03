@@ -53,14 +53,6 @@ public class LostPetController {
         return lostPetRepository.save(lostPet);
     }
 
-    // @RequestMapping(value = "/edit-lost-pet/{petId}", method = RequestMethod.PUT)
-    // @ResponseBody
-    // public LostPet updateLostPet(@PathVariable("petId") long petId, @RequestBody
-    // LostPet lostPet) {
-    // return lostPetRepository.editAdditionalInfo(petId,
-    // lostPet.getLostPetAdditionalInfo());
-    // }
-
     @RequestMapping(value = "/edit-lost-pet/{petId}", method = RequestMethod.PUT)
     @ResponseBody
     public LostPet updateLostPet(@PathVariable("petId") long petId, @RequestBody LostPet lostPet) {
@@ -70,11 +62,9 @@ public class LostPetController {
     }
 
     @RequestMapping(value = "/delete-lost-pet/{id}", method = RequestMethod.DELETE)
-    public void deleteLostPet(@PathVariable("id") long id) {
-        LostPet lostPet = lostPetRepository.findById(id).get();
-        if (lostPet != null) {
-            lostPetRepository.delete(lostPet);
-        }
+    public void deleteLostPet(@PathVariable("id") long petId) {
+        LostPet lostPetToDelete = lostPetRepository.findLostPetByPetId(petId);
+        lostPetRepository.delete(lostPetToDelete);
     }
 
 }

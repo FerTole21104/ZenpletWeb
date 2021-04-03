@@ -2,6 +2,7 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,7 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "Pet")
@@ -43,7 +43,7 @@ public class Pet {
     @ManyToOne
     private Owner petOwner;
 
-    @OneToMany(mappedBy = "pet")
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE)
     private Set<LostPet> ownerLostPets;
 
     @OneToMany(mappedBy = "pet")

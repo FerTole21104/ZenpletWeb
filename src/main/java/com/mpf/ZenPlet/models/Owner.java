@@ -36,7 +36,7 @@ public class Owner {
     @JoinColumn(name = "pet_owner_owner_id", nullable = false, updatable = false, insertable = false)
     private Set<Pet> ownerPets;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE)
     private Set<LostPet> ownerLostPets;
 
     @Column(name = "owner_token", nullable = true)
