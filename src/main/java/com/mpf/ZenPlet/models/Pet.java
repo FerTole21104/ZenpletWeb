@@ -39,6 +39,9 @@ public class Pet {
     @Column(name = "pet_genre", nullable = true)
     private String petGenre;
 
+    @Column(name = "pet_birthdate", nullable = true)
+    private String petBirthdate;
+
     @JsonBackReference
     @ManyToOne
     private Owner petOwner;
@@ -53,13 +56,14 @@ public class Pet {
     }
 
     public Pet(long petId, String petName, String petImage, String petBreed, String petSize, String petGenre,
-            Owner petOwner) {
+            String petBirthdate, Owner petOwner) {
         this.petId = petId;
         this.petName = petName;
         this.petImage = petImage;
         this.petBreed = petBreed;
         this.petSize = petSize;
         this.petGenre = petGenre;
+        this.petBirthdate = petBirthdate;
         this.petOwner = petOwner;
     }
 
@@ -117,6 +121,14 @@ public class Pet {
 
     public void setPetOwner(Owner petOwner) {
         this.petOwner = petOwner;
+    }
+
+    public String getPetBirthdate() {
+        return petBirthdate;
+    }
+
+    public void setPetBirthdate(String petBirthdate) {
+        this.petBirthdate = petBirthdate;
     }
 
     public Set<PetVaccines> getPetVaccines() {
