@@ -123,21 +123,20 @@ public class Pet {
         this.petOwner = petOwner;
     }
 
-<<<<<<< HEAD
     public String getPetBirthdate() {
         return petBirthdate;
     }
 
     public void setPetBirthdate(String petBirthdate) {
         this.petBirthdate = petBirthdate;
-=======
+    }
+
     public Set<PetVaccines> getPetVaccines() {
         return petVaccines;
     }
 
     public void setPetVaccines(Set<PetVaccines> petVaccines) {
         this.petVaccines = petVaccines;
->>>>>>> 3b383d6554eedfef6e6ad6b3bca3a342aabebffd
     }
 
 }
