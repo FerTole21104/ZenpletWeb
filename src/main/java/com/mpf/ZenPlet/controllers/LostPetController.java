@@ -3,7 +3,6 @@ package com.mpf.ZenPlet.controllers;
 import java.util.List;
 
 import com.mpf.ZenPlet.models.LostPet;
-import com.mpf.ZenPlet.models.Pet;
 import com.mpf.ZenPlet.repositories.LostPetRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,8 @@ public class LostPetController {
     }
 
     @RequestMapping(value = "/lost-pet/pet/{petId}", method = RequestMethod.GET)
-    public Pet getLostPetByPetId(@PathVariable("petId") long petId) {
-        return this.lostPetRepository.findPetByPetId(petId);
+    public LostPet getLostPetByPetId(@PathVariable("petId") long petId) {
+        return this.lostPetRepository.findLostPetByPetId(petId);
     }
 
     /*
