@@ -1,7 +1,5 @@
 package com.mpf.ZenPlet.models;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -28,22 +26,15 @@ public class PetVaccines {
     private Vaccines vaccine;
 
     @Column(name = "pet_vaccine_date", nullable = false)
-    private Date petVaccineDate;
+    private String petVaccineDate;
 
     @Column(name = "pet_vaccine_next", nullable = false)
-    private Date petVaccineNext;
+    private String petVaccineNext;
 
     public PetVaccines() {
     }
 
-    public PetVaccines(PetVaccinesId id, Pet pet, Vaccines vaccine, Date petVaccineDate, Date petVaccineNext) { // can
-                                                                                                                // be
-                                                                                                                // modified
-                                                                                                                // to
-                                                                                                                // model
-                                                                                                                // input
-                                                                                                                // in
-                                                                                                                // swagger
+    public PetVaccines(PetVaccinesId id, Pet pet, Vaccines vaccine, String petVaccineDate, String petVaccineNext) {
         this.id = id;
         this.pet = pet;
         this.vaccine = vaccine;
@@ -75,19 +66,19 @@ public class PetVaccines {
         this.vaccine = vaccine;
     }
 
-    public Date getPetVaccineDate() {
+    public String getPetVaccineDate() {
         return petVaccineDate;
     }
 
-    public void setPetVaccineDate(Date petVaccineDate) {
+    public void setPetVaccineDate(String petVaccineDate) {
         this.petVaccineDate = petVaccineDate;
     }
 
-    public Date getPetVaccineNext() {
+    public String getPetVaccineNext() {
         return petVaccineNext;
     }
 
-    public void setPetVaccineNext(Date petVaccineNext) {
+    public void setPetVaccineNext(String petVaccineNext) {
         this.petVaccineNext = petVaccineNext;
     }
 

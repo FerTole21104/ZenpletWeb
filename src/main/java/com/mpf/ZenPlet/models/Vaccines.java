@@ -2,6 +2,7 @@ package com.mpf.ZenPlet.models;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +25,7 @@ public class Vaccines {
     @Column(name = "vaccines_description", nullable = false)
     private String vaccinesDescription;
 
-    @OneToMany(mappedBy = "vaccine")
+    @OneToMany(mappedBy = "vaccine", cascade = CascadeType.REMOVE)
     private Set<PetVaccines> petVaccines;
 
     // Constructores
@@ -61,6 +62,14 @@ public class Vaccines {
 
     public void setVaccinesId(long vaccinesId) {
         this.vaccinesId = vaccinesId;
+    }
+
+    public Set<PetVaccines> getPetVaccines() {
+        return petVaccines;
+    }
+
+    public void setPetVaccines(Set<PetVaccines> petVaccines) {
+        this.petVaccines = petVaccines;
     }
 
 }

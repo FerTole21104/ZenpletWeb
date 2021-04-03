@@ -46,8 +46,8 @@ public class Pet {
     @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE)
     private Set<LostPet> ownerLostPets;
 
-    @OneToMany(mappedBy = "pet")
-    private Set<LostPet> petVaccines;
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.REMOVE)
+    private Set<PetVaccines> petVaccines;
 
     public Pet() {
     }
@@ -117,6 +117,14 @@ public class Pet {
 
     public void setPetOwner(Owner petOwner) {
         this.petOwner = petOwner;
+    }
+
+    public Set<PetVaccines> getPetVaccines() {
+        return petVaccines;
+    }
+
+    public void setPetVaccines(Set<PetVaccines> petVaccines) {
+        this.petVaccines = petVaccines;
     }
 
 }
