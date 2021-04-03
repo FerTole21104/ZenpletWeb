@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Vaccine")
 public class Vaccines {
@@ -25,10 +27,10 @@ public class Vaccines {
     @Column(name = "vaccines_description", nullable = false)
     private String vaccinesDescription;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "vaccine", cascade = CascadeType.REMOVE)
     private Set<PetVaccines> petVaccines;
 
-    // Constructores
     public Vaccines() {
     }
 

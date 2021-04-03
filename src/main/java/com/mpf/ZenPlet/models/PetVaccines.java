@@ -8,16 +8,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "Pet_Vaccine")
 public class PetVaccines {
 
     @EmbeddedId
-    private PetVaccinesId id;
+    private PetVaccinesId id = new PetVaccinesId();
 
     @ManyToOne
     @MapsId("petId")
     @JoinColumn(name = "pet_id")
+    @JsonBackReference
     private Pet pet;
 
     @ManyToOne
