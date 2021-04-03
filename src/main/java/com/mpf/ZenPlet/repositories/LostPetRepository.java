@@ -10,4 +10,10 @@ import org.springframework.data.repository.query.Param;
 public interface LostPetRepository extends JpaRepository<LostPet, Long> {
     @Query(value = "SELECT lp.pet from LostPet lp where lp.id.petId = :petId")
     public Pet findPetByPetId(@Param("petId") long petId);
+
+    @Query(value = "SELECT lp from LostPet lp where lp.id.petId = :petId")
+    public LostPet findLostPetByPetId(@Param("petId") long petId);
+
+    @Query(value = "UPDATE LostPet lp set lp.lostPetAdditionalInfo = :additionalInfo where lp.id.petId = :petId ")
+    public LostPet editAdditionalInfo(@Param("petId") long petId, @Param("additionalInfo") String additionalInfo);
 }

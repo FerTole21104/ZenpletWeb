@@ -66,4 +66,8 @@ public class LostPet {
         this.lostPetAdditionalInfo = lostPetAdditionalInfo;
     }
 
+    public String getLostPetAdditionalInfo() {
+        return lostPetAdditionalInfo;
+    }
+
 }
