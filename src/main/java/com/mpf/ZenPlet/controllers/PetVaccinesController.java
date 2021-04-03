@@ -3,7 +3,6 @@ package com.mpf.ZenPlet.controllers;
 import java.util.List;
 
 import com.mpf.ZenPlet.models.PetVaccines;
-import com.mpf.ZenPlet.models.PetVaccinesId;
 import com.mpf.ZenPlet.repositories.PetVaccinesRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +45,15 @@ public class PetVaccinesController {
      * petVaccinesRepository.findByName(name); }
      */
 
-    @RequestMapping(value = "/edit-pet-vaccines/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit-pet-vaccines/{petId}", method = RequestMethod.PUT)
     @ResponseBody
-    public PetVaccines updatePetVaccines(@PathVariable("id") PetVaccinesId id, @RequestBody PetVaccines petVaccines) {
-        petVaccines.setId(id);
+    public PetVaccines updatePetVaccines(@PathVariable("petId") long petId, @RequestBody PetVaccines petVaccines) {
+        PetVaccines petVaccine = petVaccinesRepository.findPetVaccineByPetId(petId);
+        petVaccines.setId(petVaccine.getId());
+        // petVaccine.setPet(petVaccines.getPet());
+        // petVaccine.setVaccine(petVaccines.getVaccine());
+        // petVaccine.setPetVaccineDate(petVaccines.getPetVaccineDate());
+        // petVaccine.setPetVaccineNext(petVaccines.getPetVaccineNext());
         return petVaccinesRepository.save(petVaccines);
     }
 

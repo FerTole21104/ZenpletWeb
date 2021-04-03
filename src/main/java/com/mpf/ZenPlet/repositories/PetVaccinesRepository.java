@@ -3,11 +3,10 @@ package com.mpf.ZenPlet.repositories;
 import com.mpf.ZenPlet.models.PetVaccines;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 public interface PetVaccinesRepository extends JpaRepository<PetVaccines, Long> {
-    /*
-     * @Query(value = "SELECT o from Owner o where o.ownerName like %:name%") public
-     * List<Owner> findByName(@Param("name") String name);
-     */
-
+    @Query(value = "SELECT pv from PetVaccines pv where pv.id.petId = :petId")
+    public PetVaccines findPetVaccineByPetId(@Param("petId") long petId);
 }
