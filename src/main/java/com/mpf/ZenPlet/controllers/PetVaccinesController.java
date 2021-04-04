@@ -45,15 +45,12 @@ public class PetVaccinesController {
      * petVaccinesRepository.findByName(name); }
      */
 
-    @RequestMapping(value = "/edit-pet-vaccines/{petId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/edit-pet-vaccines/{petId}/{vaccineId}", method = RequestMethod.PUT)
     @ResponseBody
-    public PetVaccines updatePetVaccines(@PathVariable("petId") long petId, @RequestBody PetVaccines petVaccines) {
-        PetVaccines petVaccine = petVaccinesRepository.findPetVaccineByPetId(petId);
+    public PetVaccines updatePetVaccines(@PathVariable("petId") long petId, @PathVariable("vaccineId") long vaccineId,
+            @RequestBody PetVaccines petVaccines) {
+        PetVaccines petVaccine = petVaccinesRepository.findPetVaccineById(petId, vaccineId);
         petVaccines.setId(petVaccine.getId());
-        // petVaccine.setPet(petVaccines.getPet());
-        // petVaccine.setVaccine(petVaccines.getVaccine());
-        // petVaccine.setPetVaccineDate(petVaccines.getPetVaccineDate());
-        // petVaccine.setPetVaccineNext(petVaccines.getPetVaccineNext());
         return petVaccinesRepository.save(petVaccines);
     }
 

@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface PetVaccinesRepository extends JpaRepository<PetVaccines, Long> {
-    @Query(value = "SELECT pv from PetVaccines pv where pv.id.petId = :petId")
-    public PetVaccines findPetVaccineByPetId(@Param("petId") long petId);
+    @Query(value = "SELECT pv from PetVaccines pv where pv.id.petId = :petId and pv.id.vaccineId = :vaccineId")
+    public PetVaccines findPetVaccineById(@Param("petId") long petId, @Param("vaccineId") long vaccineId);
 }
