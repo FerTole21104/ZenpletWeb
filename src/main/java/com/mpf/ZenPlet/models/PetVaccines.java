@@ -1,5 +1,6 @@
 package com.mpf.ZenPlet.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -23,7 +24,7 @@ public class PetVaccines {
     @JsonBackReference
     private Pet pet;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     @MapsId("vaccineId")
     @JoinColumn(name = "vaccine_id")
     private Vaccines vaccine;
