@@ -1,7 +1,10 @@
 package com.mpf.ZenPlet.controllers;
 
+import com.mpf.ZenPlet.models.PetsFound;
 import com.mpf.ZenPlet.repositories.PetsFoundRepository;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +21,8 @@ public class PetsFoundController {
 
     @GetMapping("/pets-found")
     public long getPetsFound() {
+        Log log = LogFactory.getLog(PetsFound.class);
+        log.info(petsFoundRepository.getCounter());
         return petsFoundRepository.getCounter();
     }
 

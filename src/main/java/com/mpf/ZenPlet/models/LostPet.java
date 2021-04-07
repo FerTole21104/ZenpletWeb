@@ -11,7 +11,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Lost_Pet")
 public class LostPet {
-
     @EmbeddedId
     private LostPetId id = new LostPetId();
 
@@ -69,5 +68,4 @@ public class LostPet {
     public String getLostPetAdditionalInfo() {
         return lostPetAdditionalInfo;
     }
-
 }

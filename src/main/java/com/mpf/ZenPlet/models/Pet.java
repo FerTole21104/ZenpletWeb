@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,11 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.mpf.ZenPlet.listeners.AuditPetListener;
 
 @Entity
 @Table(name = "Pet")
-@EntityListeners(AuditPetListener.class)
 public class Pet {
 
     @Id
@@ -45,9 +42,6 @@ public class Pet {
     @Column(name = "pet_birthdate", nullable = true)
     private String petBirthdate;
 
-    @Column(name = "pet_status", nullable = false)
-    private short petStatus = 0;
-
     @JsonBackReference
     @ManyToOne
     private Owner petOwner;
@@ -62,7 +56,7 @@ public class Pet {
     }
 
     public Pet(long petId, String petName, String petImage, String petBreed, String petSize, String petGenre,
-            String petBirthdate, Owner petOwner, short petStatus) {
+            String petBirthdate, Owner petOwner) {
         this.petId = petId;
         this.petName = petName;
         this.petImage = petImage;
@@ -71,7 +65,6 @@ public class Pet {
         this.petGenre = petGenre;
         this.petBirthdate = petBirthdate;
         this.petOwner = petOwner;
-        this.petStatus = petStatus;
     }
 
     public long getPetId() {
@@ -144,14 +137,6 @@ public class Pet {
 
     public void setPetVaccines(Set<PetVaccines> petVaccines) {
         this.petVaccines = petVaccines;
-    }
-
-    public short getPetStatus() {
-        return petStatus;
-    }
-
-    public void setPetStatus(short petStatus) {
-        this.petStatus = petStatus;
     }
 
 }
