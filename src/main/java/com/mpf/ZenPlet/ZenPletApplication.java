@@ -42,7 +42,8 @@ public class ZenPletApplication {
             http.cors().and().csrf().disable()
                     .addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                     .authorizeRequests().antMatchers(HttpMethod.GET, "/api/login-owner").permitAll()
-                    .antMatchers(HttpMethod.POST, "/api/save-owner").permitAll().anyRequest().authenticated();
+                    .antMatchers(HttpMethod.POST, "/api/save-owner").permitAll()
+                    .antMatchers(HttpMethod.GET, "/api/pets-found").permitAll().anyRequest().authenticated();
         }
     }
 
