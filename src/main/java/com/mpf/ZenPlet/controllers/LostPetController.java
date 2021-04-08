@@ -58,6 +58,7 @@ public class LostPetController {
     public LostPet updateLostPet(@PathVariable("petId") long petId, @RequestBody LostPet lostPet) {
         LostPet lostPetToEdit = lostPetRepository.findLostPetByPetId(petId);
         lostPetToEdit.setLostPetAdditionalInfo(lostPet.getLostPetAdditionalInfo());
+        lostPetToEdit.setLostPetLocation(lostPet.getLostPetLocation());
         return lostPetRepository.save(lostPetToEdit);
     }
 

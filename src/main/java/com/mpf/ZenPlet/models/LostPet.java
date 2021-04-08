@@ -25,17 +25,21 @@ public class LostPet {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @Column(name = "lost_pet_location", nullable = true)
+    private String lostPetLocation;
+
     @Column(name = "lost_pet_additional_info", nullable = false)
     private String lostPetAdditionalInfo;
 
     public LostPet() {
     }
 
-    public LostPet(LostPetId id, Pet pet, Owner owner, String lostPetAdditionalInfo) {
+    public LostPet(LostPetId id, Pet pet, Owner owner, String lostPetAdditionalInfo, String lostPetLocation) {
         this.id = id;
         this.pet = pet;
         this.owner = owner;
         this.lostPetAdditionalInfo = lostPetAdditionalInfo;
+        this.lostPetLocation = lostPetLocation;
     }
 
     public LostPetId getId() {
@@ -68,6 +72,14 @@ public class LostPet {
 
     public String getLostPetAdditionalInfo() {
         return lostPetAdditionalInfo;
+    }
+
+    public String getLostPetLocation() {
+        return lostPetLocation;
+    }
+
+    public void setLostPetLocation(String lostPetLocation) {
+        this.lostPetLocation = lostPetLocation;
     }
 
 }
