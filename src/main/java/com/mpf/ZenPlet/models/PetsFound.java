@@ -15,7 +15,7 @@ public class PetsFound {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long petsFoundId;
 
-    @Column(name = "pets_found_counter", nullable = true)
+    @Column(name = "pets_found_counter", nullable = false)
     private long petsFoundCounter;
 
     public PetsFound() {

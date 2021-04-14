@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 @Table(name = "Vaccine")
 public class Vaccines {
-    // Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long vaccinesId;
@@ -39,8 +38,6 @@ public class Vaccines {
         this.vaccinesName = vaccinesName;
         this.vaccinesDescription = vaccinesDescription;
     }
-
-    // Getters and Setters
 
     public String getVaccinesName() {
         return vaccinesName;

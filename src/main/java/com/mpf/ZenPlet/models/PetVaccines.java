@@ -26,7 +26,7 @@ public class PetVaccines {
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     @MapsId("vaccineId")
-    @JoinColumn(name = "vaccine_id")
+    @JoinColumn(name = "vaccine_id", nullable = false)
     private Vaccines vaccine;
 
     @Column(name = "pet_vaccine_date", nullable = false)

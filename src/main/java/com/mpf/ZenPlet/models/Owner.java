@@ -20,20 +20,20 @@ public class Owner {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long ownerId;
 
-    @Column(name = "owner_name", nullable = false)
+    @Column(name = "owner_name", nullable = false, unique = true)
     private String ownerName;
 
-    @Column(name = "owner_email", nullable = false)
+    @Column(name = "owner_email", nullable = false, unique = true)
     private String ownerEmail;
 
     @Column(name = "owner_password", nullable = false)
     private String ownerPassword;
 
-    @Column(name = "owner_phone_number", nullable = true)
+    @Column(name = "owner_phone_number", nullable = true, unique = true)
     private String ownerPhoneNumber;
 
     @OneToMany(targetEntity = Pet.class, cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "pet_owner_owner_id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "pet_owner_owner_id", updatable = false, insertable = false)
     private Set<Pet> ownerPets;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.REMOVE)

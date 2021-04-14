@@ -16,15 +16,15 @@ public class LostPet {
 
     @ManyToOne
     @MapsId("petId")
-    @JoinColumn(name = "pet_id")
+    @JoinColumn(name = "pet_id", nullable = false, unique = true)
     private Pet pet;
 
     @ManyToOne
     @MapsId("ownerId")
-    @JoinColumn(name = "owner_id")
+    @JoinColumn(name = "owner_id", nullable = false)
     private Owner owner;
 
-    @Column(name = "lost_pet_location", nullable = true)
+    @Column(name = "lost_pet_location", nullable = false)
     private String lostPetLocation;
 
     @Column(name = "lost_pet_additional_info", nullable = false)
