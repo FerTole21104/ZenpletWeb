@@ -23,23 +23,23 @@ public class Pet {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long petId;
 
-    @Column(name = "pet_name", nullable = true)
+    @Column(name = "pet_name", nullable = false)
     private String petName;
 
-    @Column(name = "pet_image", nullable = true)
+    @Column(name = "pet_image", nullable = false)
     @Lob
     private String petImage;
 
-    @Column(name = "pet_breed", nullable = true)
+    @Column(name = "pet_breed", nullable = false)
     private String petBreed;
 
-    @Column(name = "pet_size", nullable = true)
+    @Column(name = "pet_size", nullable = false)
     private String petSize;
 
-    @Column(name = "pet_genre", nullable = true)
+    @Column(name = "pet_genre", nullable = false)
     private String petGenre;
 
-    @Column(name = "pet_birthdate", nullable = true)
+    @Column(name = "pet_birthdate", nullable = false)
     private String petBirthdate;
 
     @JsonBackReference
