@@ -11,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-@Transactional 
 public interface PetRepository extends JpaRepository<Pet, Long> {
     @Query(value = "SELECT p from Pet p where p.petName like %:name%")
     public List<Pet> findByName(@Param("name") String name);
