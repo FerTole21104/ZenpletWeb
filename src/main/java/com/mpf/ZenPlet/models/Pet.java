@@ -28,6 +28,7 @@ public class Pet {
 
     @Column(name = "pet_image", nullable = false)
     @Lob
+    @Type(type = "org.hibernate.type.ImageType")
     private String petImage;
 
     @Column(name = "pet_breed", nullable = false)
