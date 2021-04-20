@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Transactional 
 public interface OwnerRepository extends JpaRepository<Owner, Long> {
 
     @Query(value = "SELECT o from Owner o where o.ownerName like %:name%")
