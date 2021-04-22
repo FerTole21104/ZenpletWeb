@@ -18,7 +18,8 @@ class ZenPletApplicationTests {
         @Test
         @Order(0)
         void contextLoads() throws Exception {
-                mock.perform(MockMvcRequestBuilders.post("/api/save-owner").contentType(MediaType.APPLICATION_JSON))
+                mock.perform(MockMvcRequestBuilders.post("/api/save-owner").contentType(MediaType.APPLICATION_JSON)
+                                .content("{\"owner_name\":\"lucho\",\"owner_email\":\"juan@gmail.com\",\"owner_password\":\"114321\",\"owner_phone_number\":\"1231213\"}"))
                                 .andDo(MockMvcResultHandlers.print());
         }
 
